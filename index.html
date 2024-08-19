@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Distance Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Color Distance Calculator</h1>
+    <form id="colorForm">
+        <label for="color1">Color 1 (HEX):</label>
+        <input type="text" id="color1" name="color1" placeholder="#RRGGBB"><br>
+        <label for="color2">Color 2 (HEX):</label>
+        <input type="text" id="color2" name="color2" placeholder="#RRGGBB"><br>
+        <label for="color3">Color 3 (HEX):</label>
+        <input type="text" id="color3" name="color3" placeholder="#RRGGBB"><br>
+    </form>
+    <p id="result"></p>
+    <div id="colorBoxes">
+        <div class="box-row">
+            <div id="box1" class="color-box"></div>
+            <div id="box2" class="color-box"></div>
+        </div>
+        <div class="box-row">
+            <div id="box3" class="color-box"></div>
+            <div id="box4" class="color-box"></div>
+        </div>
+    </div>
+    <div id="presetButtons">
+        <button onclick="setPresetColors('#FF5733', '#33FF57', '#3357FF')">Preset 1</button>
+        <button onclick="setPresetColors('#000000', '#FFFFFF', '#FF0000')">Preset 2</button>
+        <button onclick="setPresetColors('#123456', '#654321', '#ABCDEF')">Preset 3</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
