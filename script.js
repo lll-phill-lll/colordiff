@@ -22,6 +22,13 @@ function euclideanDistance(basecolor, color1) {
     return Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);
 }
 
+function euclideanDistanceWeighted(basecolor, color1) {
+    const rDiff = basecolor[0] - color1[0];
+    const gDiff = basecolor[1] - color1[1];
+    const bDiff = basecolor[2] - color1[2];
+    return Math.sqrt(0.3 * rDiff * rDiff + 0.59 * gDiff * gDiff + 0.11 * bDiff * bDiff);
+}
+
 function formatHex(hex) {
     hex = hex.replace(/^#/, '');
     return '#' + hex.padStart(6, 'f');
@@ -71,10 +78,14 @@ function updateColors() {
         const rgbColor2 = hexToRgb(color1);
         const rgbColor3 = hexToRgb(color2);
 
-        const distance1to2 = euclideanDistance(rgbColor1, rgbColor2);
-        const distance1to3 = euclideanDistance(rgbColor1, rgbColor3);
+        const eucliddistance1to2 = euclideanDistance(rgbColor1, rgbColor2);
+        const eucliddistance1to3 = euclideanDistance(rgbColor1, rgbColor3);
 
-        document.getElementById('result').innerText = `Distance between color 1 and color 2: ${distance1to2.toFixed(2)}\nDistance between color 1 and color 3: ${distance1to3.toFixed(2)}`;
+        document.getElementById('resultEuclid').innerText = `Euclidian base->1: ${eucliddistance1to2.toFixed(2)}\nEuclidian base->2: ${eucliddistance1to3.toFixed(2)}`;
+
+        const eucliddistance1to2weighted = euclideanDistanceWeighted(rgbColor1, rgbColor2);
+        const eucliddistance1to3weighted = euclideanDistanceWeighted(rgbColor1, rgbColor3);
+        document.getElementById('resultWeightedEuclid').innerText = `Weighted euclidian base->1: ${eucliddistance1to2weighted.toFixed(2)}\nWeighted euclidian base->2: ${eucliddistance1to3weighted.toFixed(2)}`;
 
         document.getElementById('box1').style.backgroundColor = basecolor;
         document.getElementById('box1').style.color = getContrastYIQ(basecolor);
