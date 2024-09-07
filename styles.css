@@ -152,3 +152,11 @@ thead:last-child tr:last-child th:first-child,
 tbody:last-child tr:last-child td:first-child {
     border-radius: 0 0 0 4px;
 }
+
+li {
+    text-align: justify;
+}
+
+p {
+    text-align: justify;
+}

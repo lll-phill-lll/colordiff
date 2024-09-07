@@ -10,6 +10,8 @@
     <h1>Color Distance Calculator</h1>
 
     <div class="colorsWrapper">
+        <p>A tool that demonstrates how colors that are close according to the Euclidean metric aren't always perceived as similar by the human eye.</p>
+
         <div id="presetButtons">
             <button onclick="setPresetColors('#FFFF00', '#FFFF80', '#B2B200')">Preset 1</button>
             <button onclick="setPresetColors('#667f4b', '#7d9757', '#6b6147')">Preset 2</button>
@@ -61,10 +63,12 @@
 
         <h1>About:</h1>
 
-        <p>Presets 1 and 2 illustrate how the Euclidean distance method inaccurately identifies the closest pair of colors.</p>
-        <p>3 preset shows that both methods struggle to accurately identify similar colors.</p>
-        <p>Random button selects three random colors and calculates the metrics for them.</p>
-        <p>Smart random button selects three colors where the Euclidean metric clearly fails from a human perspective.</p>
+        <ul>
+            <li>Presets 1 and 2 illustrate how the Euclidean distance method inaccurately identifies the closest pair of colors.</li>
+            <li>3 preset shows that both methods struggle to accurately identify similar colors.</li>
+            <li>Random button selects three random colors and calculates the metrics for them.</li>
+            <li>Smart random button selects three colors where the Euclidean metric clearly fails from a human perspective.</li>
+        </ul> 
     </div>
 
 
