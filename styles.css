@@ -22,7 +22,7 @@ label {
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: 2px solid #ccc;
+    border: 2px solid #424242;
     border-radius: 4px;
     width: calc(100%); /* Adjust width considering padding and border */
     transition: border-color 0.3s;
