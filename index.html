@@ -7,32 +7,36 @@
 </head>
 <body>
     <h1>Color Distance Calculator</h1>
-    <div id="presetButtons">
-        <button onclick="setPresetColors('#FFFF00', '#FFFF80', '#B2B200')">Preset 1</button>
-        <button onclick="setPresetColors('#FF0000', '#FF4040', '#B20000')">Preset 2</button>
-        <button onclick="setPresetColors('#123456', '#654321', '#ABCDEF')">Preset 3</button>
-        <button onclick="setCiede2000RandomColors()">Smart random</button>
-        <button onclick="setRandomColors()">Random</button>
-    </div>
-    <form id="colorForm">
-        <label for="basecolor">Base color (HEX):</label>
-        <input type="text" id="basecolor" name="basecolor" placeholder="#RRGGBB"><br>
-        <label for="color1">Color 1 (HEX):</label>
-        <input type="text" id="color1" name="color1" placeholder="#RRGGBB"><br>
-        <label for="color2">Color 2 (HEX):</label>
-        <input type="text" id="color2" name="color2" placeholder="#RRGGBB"><br>
-    </form>
-    <p id="resultEuclid"></p>
-    <p id="resultCiede"></p>
-    <div id="colorBoxes">
-        <div class="box-row">
-            <div id="box1" class="color-box"></div>
-            <div id="box2" class="color-box"></div>
+    <div class="colorsWrapper">
+        <div id="presetButtons">
+            <button onclick="setPresetColors('#FFFF00', '#FFFF80', '#B2B200')">Preset 1</button>
+            <button onclick="setPresetColors('#FF0000', '#FF4040', '#B20000')">Preset 2</button>
+            <button onclick="setPresetColors('#123456', '#654321', '#ABCDEF')">Preset 3</button>
+            <button onclick="setCiede2000RandomColors()">Smart random</button>
+            <button onclick="setRandomColors()">Random</button>
         </div>
-        <div class="box-row">
-            <div id="box3" class="color-box"></div>
-            <div id="box4" class="color-box"></div>
+        <div class="row">
+            <div id="colorBoxes">
+                <div class="box-row">
+                    <div id="box1" class="color-box"></div>
+                    <div id="box2" class="color-box"></div>
+                </div>
+                <div class="box-row">
+                    <div id="box3" class="color-box"></div>
+                    <div id="box4" class="color-box"></div>
+                </div>
+            </div>
+            <form id="colorForm">
+                <label for="basecolor">Base color (HEX):</label>
+                <input type="text" id="basecolor" name="basecolor" placeholder="#RRGGBB"><br>
+                <label for="color1">Color 1 (HEX):</label>
+                <input type="text" id="color1" name="color1" placeholder="#RRGGBB"><br>
+                <label for="color2">Color 2 (HEX):</label>
+                <input type="text" id="color2" name="color2" placeholder="#RRGGBB"><br>
+            </form>
         </div>
+        <p id="resultEuclid"></p>
+        <p id="resultCiede"></p>
     </div>
     <script src="script.js"></script>
     <script src="colormath.js"></script>

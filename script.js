@@ -130,7 +130,7 @@ function findColorTriplets() {
         const euclideanDistanceBaseTo1 = euclid(basecolor, color1);
         const euclideanDistanceBaseTo2 = euclid(basecolor, color2);
 
-        if (ciedeDistanceBaseTo1 < 20 && ciedeDistanceBaseTo1 < ciedeDistanceBaseTo2 && euclideanDistanceBaseTo1 > euclideanDistanceBaseTo2) {
+        if (ciedeDistanceBaseTo1 < 10 && ciedeDistanceBaseTo1 < ciedeDistanceBaseTo2 && euclideanDistanceBaseTo1 > euclideanDistanceBaseTo2) {
             return [basecolor, color1, color2]
         }
     }

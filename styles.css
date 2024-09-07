@@ -24,7 +24,7 @@ input[type="text"] {
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 4px;
-    width: calc(50%); /* Adjust width considering padding and border */
+    width: calc(100%); /* Adjust width considering padding and border */
     transition: border-color 0.3s;
     box-sizing: border-box;
 }
@@ -34,21 +34,46 @@ input[type="text"]:focus {
     outline: none;
 }
 
-.color-box {
-    width: 80px; /* Shorter width */
-    height: 80px; /* Shorter height */
-    border: 2px solid #000;
-    border-radius: 4px;
+.colorsWrapper {
+    max-width: 570px;
+}
+
+#presetButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 #colorBoxes {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 33px;
 }
 
-#colorBoxes .box-row {
+.box-row {
     display: flex;
-    gap: 10px; /* Less gap */
-    margin-bottom: 10px; /* Space between rows */
+    flex-direction: row;
+    height: 90px;
+    border: 2px solid #424242;
+    border-radius: 4px;
+    margin-bottom: 8px; /* Space between rows */
+}
+
+.color-box {
+    display: flex;
+    flex: 1;
+}
+
+#colorForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 button {
