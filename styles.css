@@ -66,12 +66,22 @@ input[type="text"]:focus {
     /* Space between rows */
 }
 
-.color-box {
+.color-box-left {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.color-box-right {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 #colorForm {
