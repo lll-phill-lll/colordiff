@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Color Distance Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
     <h1>Color Distance Calculator</h1>
     <div class="colorsWrapper">
@@ -35,11 +36,27 @@
                 <input type="text" id="color2" name="color2" placeholder="#RRGGBB"><br>
             </form>
         </div>
-        <p id="resultEuclid"></p>
-        <p id="resultCiede"></p>
+
+        <table>
+            <tr>
+                <th></th>
+                <th>Base vs 1</th>
+                <th>Base vs 2</th>
+            </tr>
+            <tr>
+                <td>Euclid</td>
+                <td id="resultEuclidBaseTo1"></td>
+                <td id="resultEuclidBaseTo2"></td>
+            </tr>
+            <tr>
+                <td>CIEDE2000</td>
+                <td id="resultCiedeBaseTo1"></td>
+                <td id="resultCiedeBaseTo2"></td>
+            </tr>
+        </table>
     </div>
     <script src="script.js"></script>
     <script src="colormath.js"></script>
 </body>
-</html>
 
+</html>

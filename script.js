@@ -64,8 +64,12 @@ function updateColors() {
         const ciedeBaseTo1 = ciede2000(labbase, lab1);
         const ciedeBaseTo2 = ciede2000(labbase, lab2);
 
-        document.getElementById('resultEuclid').innerText = `Euclid [Base vs 1]: ${euclidBaseTo1.toFixed(2)}\nEuclid [Base vs 2]: ${euclidBaseTo2.toFixed(2)}`;
-        document.getElementById('resultCiede').innerText = `Ciede2000 [Base vs 1]: ${ciedeBaseTo1.toFixed(2)}\nCiede2000 [Base vs 2]: ${ciedeBaseTo2.toFixed(2)}`;
+        document.getElementById('resultEuclidBaseTo1').innerText = `${euclidBaseTo1.toFixed(2)}`;
+        document.getElementById('resultEuclidBaseTo2').innerText = `${euclidBaseTo2.toFixed(2)}`;
+
+        document.getElementById('resultCiedeBaseTo1').innerText = `${ciedeBaseTo1.toFixed(2)}`;
+        document.getElementById('resultCiedeBaseTo2').innerText = `${ciedeBaseTo2.toFixed(2)}`;
+    
 
         document.getElementById('box1').style.backgroundColor = basecolor;
         document.getElementById('box1').style.color = getContrastYIQ(basecolor);
