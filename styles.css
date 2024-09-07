@@ -64,7 +64,7 @@ input[type="text"]:focus {
 .box-row {
     display: flex;
     flex-direction: row;
-    height: 90px;
+    height: 106px;
     border: 2px solid #424242;
     border-radius: 4px;
     margin-bottom: 8px;
