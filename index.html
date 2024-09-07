@@ -8,6 +8,7 @@
 
 <body>
     <h1>Color Distance Calculator</h1>
+
     <div class="colorsWrapper">
         <div id="presetButtons">
             <button onclick="setPresetColors('#FFFF00', '#FFFF80', '#B2B200')">Preset 1</button>
@@ -58,6 +59,17 @@
             </tr>
         </table>
     </div>
+
+    <h1>About:</h1>
+
+    <p>Presets 1 and 2 illustrate how the Euclidean distance method inaccurately identifies the closest pair of colors.</p>
+    <p>3 preset shows that both methods struggle to accurately identify similar colors.</p>
+    <p>Random button selects three random colors and calculates the metrics for them.</p>
+    <p>Smart random button selects three colors where the Euclidean metric clearly fails from a human perspective.</p>
+
+
+    <a href="https://github.com/lll-phill-lll/colordiff">Source code: https://github.com/lll-phill-lll/colordiff</a>
+
     <script src="script.js"></script>
     <script src="colormath.js"></script>
 </body>
