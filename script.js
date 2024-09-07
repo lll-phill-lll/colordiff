@@ -50,18 +50,22 @@ function updateColors() {
     }
 
     if (isValidHex(basecolor) && isValidHex(color1) && isValidHex(color2)) {
-        const rgbColor1 = hexToRgb(basecolor);
-        const rgbColor2 = hexToRgb(color1);
-        const rgbColor3 = hexToRgb(color2);
+        const rgbBase = hexToRgb(basecolor);
+        const rgb1 = hexToRgb(color1);
+        const rgb2 = hexToRgb(color2);
 
-        const eucliddistance1to2 = euclid(rgbColor1, rgbColor2);
-        const eucliddistance1to3 = euclid(rgbColor1, rgbColor3);
+        const euclidBaseTo1 = euclid(rgbBase, rgb1);
+        const euclidBaseTo2 = euclid(rgbBase, rgb2);
 
-        document.getElementById('resultEuclid').innerText = `Euclidian base->1: ${eucliddistance1to2.toFixed(2)}\nEuclidian base->2: ${eucliddistance1to3.toFixed(2)}`;
+        const labbase = rgbToLab(rgbBase);
+        const lab1 = rgbToLab(rgb1);
+        const lab2 = rgbToLab(rgb2);
 
-        const eucliddistance1to2weighted = euclid(rgbColor1, rgbColor2);
-        const eucliddistance1to3weighted = euclid(rgbColor1, rgbColor3);
-        document.getElementById('resultWeightedEuclid').innerText = `Weighted euclidian base->1: ${eucliddistance1to2weighted.toFixed(2)}\nWeighted euclidian base->2: ${eucliddistance1to3weighted.toFixed(2)}`;
+        const ciedeBaseTo1 = ciede2000(labbase, lab1);
+        const ciedeBaseTo2 = ciede2000(labbase, lab2);
+
+        document.getElementById('resultEuclid').innerText = `Euclid [Base vs 1]: ${euclidBaseTo1.toFixed(2)}\nEuclid [Base vs 2]: ${euclidBaseTo2.toFixed(2)}`;
+        document.getElementById('resultCiede').innerText = `Ciede2000 [Base vs 1]: ${ciedeBaseTo1.toFixed(2)}\nCiede2000 [Base vs 2]: ${ciedeBaseTo2.toFixed(2)}`;
 
         document.getElementById('box1').style.backgroundColor = basecolor;
         document.getElementById('box1').style.color = getContrastYIQ(basecolor);
