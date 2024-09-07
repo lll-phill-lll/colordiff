@@ -1,32 +1,8 @@
+import("./colormath.js");
 
-function hexToRgb(hex) {
-    hex = hex.replace(/^#/, '');
-    if (hex.length === 3) {
-        hex = hex.split('').map(char => char + char).join('');
-    }
-    const bigint = parseInt(hex, 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return [r, g, b];
-}
 
 function isValidHex(hex) {
     return /^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/.test(hex);
-}
-
-function euclideanDistance(basecolor, color1) {
-    const rDiff = basecolor[0] - color1[0];
-    const gDiff = basecolor[1] - color1[1];
-    const bDiff = basecolor[2] - color1[2];
-    return Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);
-}
-
-function euclideanDistanceWeighted(basecolor, color1) {
-    const rDiff = basecolor[0] - color1[0];
-    const gDiff = basecolor[1] - color1[1];
-    const bDiff = basecolor[2] - color1[2];
-    return Math.sqrt(0.3 * rDiff * rDiff + 0.59 * gDiff * gDiff + 0.11 * bDiff * bDiff);
 }
 
 function formatHex(hex) {
@@ -78,13 +54,13 @@ function updateColors() {
         const rgbColor2 = hexToRgb(color1);
         const rgbColor3 = hexToRgb(color2);
 
-        const eucliddistance1to2 = euclideanDistance(rgbColor1, rgbColor2);
-        const eucliddistance1to3 = euclideanDistance(rgbColor1, rgbColor3);
+        const eucliddistance1to2 = euclid(rgbColor1, rgbColor2);
+        const eucliddistance1to3 = euclid(rgbColor1, rgbColor3);
 
         document.getElementById('resultEuclid').innerText = `Euclidian base->1: ${eucliddistance1to2.toFixed(2)}\nEuclidian base->2: ${eucliddistance1to3.toFixed(2)}`;
 
-        const eucliddistance1to2weighted = euclideanDistanceWeighted(rgbColor1, rgbColor2);
-        const eucliddistance1to3weighted = euclideanDistanceWeighted(rgbColor1, rgbColor3);
+        const eucliddistance1to2weighted = euclid(rgbColor1, rgbColor2);
+        const eucliddistance1to3weighted = euclid(rgbColor1, rgbColor3);
         document.getElementById('resultWeightedEuclid').innerText = `Weighted euclidian base->1: ${eucliddistance1to2weighted.toFixed(2)}\nWeighted euclidian base->2: ${eucliddistance1to3weighted.toFixed(2)}`;
 
         document.getElementById('box1').style.backgroundColor = basecolor;
@@ -115,14 +91,52 @@ function setPresetColors(basecolor, color1, color2) {
     updateColors();
 }
 
-function getRandomColor() {
-    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+function colorToString(color) {
+    return '#' + color[0].toString(16).padStart(2, '0') + color[1].toString(16).padStart(2, '0') + color[2].toString(16).padStart(2, '0');
 }
 
+function getRandomColor() {
+    var num = Math.round(0xffffff * Math.random());
+    var r = num >> 16;
+    var g = num >> 8 & 255;
+    var b = num & 255;
+    return [r, g, b];
+}
+
+
 function setRandomColors() {
-    document.getElementById('basecolor').value = getRandomColor();
-    document.getElementById('color1').value = getRandomColor();
-    document.getElementById('color2').value = getRandomColor();
+    document.getElementById('basecolor').value = colorToString(getRandomColor());
+    document.getElementById('color1').value = colorToString(getRandomColor());
+    document.getElementById('color2').value = colorToString(getRandomColor());
+    updateColors();
+}
+
+function findColorTriplets() {
+    while(true) {
+        const basecolor = getRandomColor();
+        const color1 = getRandomColor();
+        const color2 = getRandomColor();
+
+        const labbase = rgbToLab(basecolor);
+        const lab1 = rgbToLab(color1);
+        const lab2 = rgbToLab(color2);
+
+        const ciedeDistanceBaseTo1 = ciede2000(labbase, lab1);
+        const ciedeDistanceBaseTo2 = ciede2000(labbase, lab2);
+        const euclideanDistanceBaseTo1 = euclid(basecolor, color1);
+        const euclideanDistanceBaseTo2 = euclid(basecolor, color2);
+
+        if (ciedeDistanceBaseTo1 < 20 && ciedeDistanceBaseTo1 < ciedeDistanceBaseTo2 && euclideanDistanceBaseTo1 > euclideanDistanceBaseTo2) {
+            return [basecolor, color1, color2]
+        }
+    }
+}
+
+function setCiede2000RandomColors() {
+    colors = findColorTriplets()
+    document.getElementById('basecolor').value = colorToString(colors[0]);
+    document.getElementById('color1').value = colorToString(colors[1]);
+    document.getElementById('color2').value = colorToString(colors[2]);
     updateColors();
 }
 
