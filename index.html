@@ -17,16 +17,6 @@
             <button onclick="setRandomColors()">Random</button>
         </div>
         <div class="row">
-            <div id="colorBoxes">
-                <div class="box-row">
-                    <div id="box1" class="color-box"></div>
-                    <div id="box2" class="color-box"></div>
-                </div>
-                <div class="box-row">
-                    <div id="box3" class="color-box"></div>
-                    <div id="box4" class="color-box"></div>
-                </div>
-            </div>
             <form id="colorForm">
                 <label for="basecolor">Base color (HEX):</label>
                 <input type="text" id="basecolor" name="basecolor" placeholder="#RRGGBB"><br>
@@ -35,6 +25,16 @@
                 <label for="color2">Color 2 (HEX):</label>
                 <input type="text" id="color2" name="color2" placeholder="#RRGGBB"><br>
             </form>
+            <div id="colorBoxes">
+                <div class="box-row">
+                    <div id="box1" class="color-box">Base</div>
+                    <div id="box2" class="color-box">1</div>
+                </div>
+                <div class="box-row">
+                    <div id="box3" class="color-box">Base</div>
+                    <div id="box4" class="color-box">2</div>
+                </div>
+            </div>
         </div>
 
         <table>
@@ -42,16 +42,19 @@
                 <th></th>
                 <th>Base vs 1</th>
                 <th>Base vs 2</th>
+                <th>Base is closer to</th>
             </tr>
             <tr>
                 <td>Euclid</td>
                 <td id="resultEuclidBaseTo1"></td>
                 <td id="resultEuclidBaseTo2"></td>
+                <td id="resultEuclid"></td>
             </tr>
             <tr>
                 <td>CIEDE2000</td>
                 <td id="resultCiedeBaseTo1"></td>
                 <td id="resultCiedeBaseTo2"></td>
+                <td id="resultCiede"></td>
             </tr>
         </table>
     </div>

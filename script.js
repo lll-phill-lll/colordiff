@@ -66,9 +66,11 @@ function updateColors() {
 
         document.getElementById('resultEuclidBaseTo1').innerText = `${euclidBaseTo1.toFixed(2)}`;
         document.getElementById('resultEuclidBaseTo2').innerText = `${euclidBaseTo2.toFixed(2)}`;
+        document.getElementById('resultEuclid').innerText = `${euclidBaseTo1 > euclidBaseTo2? 2 : 1}`;
 
         document.getElementById('resultCiedeBaseTo1').innerText = `${ciedeBaseTo1.toFixed(2)}`;
         document.getElementById('resultCiedeBaseTo2').innerText = `${ciedeBaseTo2.toFixed(2)}`;
+        document.getElementById('resultCiede').innerText = `${ciedeBaseTo1 > ciedeBaseTo2? 2 : 1}`;
     
 
         document.getElementById('box1').style.backgroundColor = basecolor;
