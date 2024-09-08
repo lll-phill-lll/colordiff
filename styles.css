@@ -160,3 +160,7 @@ li {
 p {
     text-align: justify;
 }
+
+html, body {
+    overflow-x: hidden;
+}
