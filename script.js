@@ -64,6 +64,20 @@ function updateColors() {
         const ciedeBaseTo1 = ciede2000(labbase, lab1);
         const ciedeBaseTo2 = ciede2000(labbase, lab2);
 
+        const hslBase = rgbToHsl(rgbBase);
+        const hsl1 = rgbToHsl(rgb1);
+        const hsl2 = rgbToHsl(rgb2);
+
+        const euclidBaseTo1HSL = euclidWeighted(hslBase, hsl1);
+        const euclidBaseTo2HSL = euclidWeighted(hslBase, hsl2);
+
+        const hsvBase = rgbToHsv(rgbBase);
+        const hsv1 = rgbToHsv(rgb1);
+        const hsv2 = rgbToHsv(rgb2);
+
+        const euclidBaseTo1HSV = euclidWeighted(hsvBase, hsv1);
+        const euclidBaseTo2HSV = euclidWeighted(hsvBase, hsv2);
+
         document.getElementById('resultEuclidBaseTo1').innerText = `${euclidBaseTo1.toFixed(2)}`;
         document.getElementById('resultEuclidBaseTo2').innerText = `${euclidBaseTo2.toFixed(2)}`;
         document.getElementById('resultEuclid').innerText = `${euclidBaseTo1 > euclidBaseTo2? 2 : 1}`;
@@ -71,6 +85,14 @@ function updateColors() {
         document.getElementById('resultCiedeBaseTo1').innerText = `${ciedeBaseTo1.toFixed(2)}`;
         document.getElementById('resultCiedeBaseTo2').innerText = `${ciedeBaseTo2.toFixed(2)}`;
         document.getElementById('resultCiede').innerText = `${ciedeBaseTo1 > ciedeBaseTo2? 2 : 1}`;
+
+        document.getElementById('resultEuclidBaseTo1HSL').innerText = `${euclidBaseTo1HSL.toFixed(2)}`;
+        document.getElementById('resultEuclidBaseTo2HSL').innerText = `${euclidBaseTo2HSL.toFixed(2)}`;
+        document.getElementById('resultEuclidHSL').innerText = `${euclidBaseTo1HSL > euclidBaseTo2HSL? 2 : 1}`;
+
+        document.getElementById('resultEuclidBaseTo1HSV').innerText = `${euclidBaseTo1HSV.toFixed(2)}`;
+        document.getElementById('resultEuclidBaseTo2HSV').innerText = `${euclidBaseTo2HSV.toFixed(2)}`;
+        document.getElementById('resultEuclidHSV').innerText = `${euclidBaseTo1HSV > euclidBaseTo2HSV? 2 : 1}`;
     
 
         document.getElementById('box1').style.backgroundColor = basecolor;

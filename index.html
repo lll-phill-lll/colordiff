@@ -52,10 +52,22 @@
                 <th>Base is closer to</th>
             </tr>
             <tr>
-                <td>Euclid</td>
+                <td>Euclid (rgb)</td>
                 <td id="resultEuclidBaseTo1"></td>
                 <td id="resultEuclidBaseTo2"></td>
                 <td id="resultEuclid"></td>
+            </tr>
+            <tr>
+                <td>Euclid (hsl)</td>
+                <td id="resultEuclidBaseTo1HSL"></td>
+                <td id="resultEuclidBaseTo2HSL"></td>
+                <td id="resultEuclidHSL"></td>
+            </tr>
+            <tr>
+                <td>Euclid (hsv)</td>
+                <td id="resultEuclidBaseTo1HSV"></td>
+                <td id="resultEuclidBaseTo2HSV"></td>
+                <td id="resultEuclidHSV"></td>
             </tr>
             <tr>
                 <td>CIEDE2000</td>
@@ -72,6 +84,7 @@
             <li>3 preset shows that both methods struggle to accurately identify similar colors.</li>
             <li>Random button selects three random colors and calculates the metrics for them.</li>
             <li>Smart random button selects three colors where the Euclidean metric clearly fails from a human perspective.</li>
+            <li>HSL and HSV are weighted. Weights are: 1.0, 0.5, 0.2.</li>
         </ul> 
     </div>
 

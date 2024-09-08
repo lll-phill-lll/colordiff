@@ -6,6 +6,13 @@ function euclid(rgb1, rgb2) {
     return Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);
 }
 
+function euclidWeighted(hsl1, hsl2) {
+    const hDiff = hsl1[0] - hsl2[0];
+    const sDiff = hsl1[1] - hsl2[1];
+    const lDiff = hsl1[2] - hsl2[2];
+    return Math.sqrt(hDiff * hDiff + 0.5 * sDiff * sDiff + 0.2 * lDiff * lDiff);
+}
+
 function rgbToXyz(rgb) {
     r = rgb[0] / 255;
     g = rgb[1] / 255;
@@ -116,4 +123,79 @@ function ciede2000(lab1, lab2) {
     );
 
     return delta_E;
+}
+
+function rgbToHsl(rgb) {
+    r = rgb[0] / 255;
+    g = rgb[1] / 255;
+    b = rgb[2] / 255;
+
+    let max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max == min) {
+        h = s = 0; // achromatic
+    } else {
+        let d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch (max) {
+            case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+            case g:
+                h = (b - r) / d + 2;
+                break;
+            case b:
+                h = (r - g) / d + 4;
+                break;
+        }
+
+        h /= 6;
+    }
+
+    return [
+        Math.round(h * 360),
+        Math.round(s * 100),
+        Math.round(l * 100)
+    ];
+}
+
+// Функция для перевода RGB в HSV
+function rgbToHsv(rgb) {
+    r = rgb[0] / 255;
+    g = rgb[1] / 255;
+    b = rgb[2] / 255;
+
+    let max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+    let h, s, v = max;
+
+    let d = max - min;
+    s = max == 0 ? 0 : d / max;
+
+    if (max == min) {
+        h = 0; // achromatic
+    } else {
+        switch (max) {
+            case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+            case g:
+                h = (b - r) / d + 2;
+                break;
+            case b:
+                h = (r - g) / d + 4;
+                break;
+        }
+
+        h /= 6;
+    }
+
+    return [
+        Math.round(h * 360),
+        Math.round(s * 100),
+        Math.round(v * 100)
+    ];
 }
